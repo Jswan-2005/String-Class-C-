@@ -1,4 +1,5 @@
 #include <ostream>
+#include <utility>
 
 class String {
 public:
@@ -9,9 +10,11 @@ public:
     String(const String& other);
     int get_size() const;
     String& operator=(const String& other);
-    String& operator +(const String& other) const;
+    String operator+(const String &other) const;
     bool operator==(const String& other) const;
     char operator[](int index) const;
+    String (String&& other) noexcept;
+    String& operator=(String&& other) noexcept;
 private:
     char* data;
     int size = 0;
